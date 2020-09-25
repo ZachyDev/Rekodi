@@ -1,7 +1,7 @@
 <template>
   <div class="add-meeting container">
     <h2 class="center-align indigo-text">Add New Meeting Record</h2>
-    <form>
+    <form @submit.prevent="AddRecord">
       <div class="field title">
         <label for="type">Meeting Type:</label>
         <input type="text" name="type" v-model="type">
@@ -28,6 +28,7 @@
       </div>
 
       <div class="field center-align">
+        <p class="align-center" v-if="feedback">{{ feedback }}</p>
         <button class="btn pink">Add Record</button>
       </div>
     </form>
@@ -35,6 +36,8 @@
 </template>
 
 <script>
+import firestoreDb from '@/firebase/init';
+
 export default {
   name: 'AddRecord',
   data() {
@@ -44,7 +47,27 @@ export default {
       attendees: '',
       summary: '',
       date: '',
+      feedback: '',
     };
+  },
+  methods: {
+    AddRecord() {
+      if (this.type && this.dept && this.attendees && this.summary && this.date) {
+        firestoreDb.collection('r_meetings').add({
+          type: this.type,
+          department: this.dept,
+          attendees: this.attendees,
+          summary: this.summary,
+          date: this.date,
+        })
+          .then(() => {
+            this.$router.push({ name: 'Home' });
+          })
+          .catch(() => {
+            alert('Would not save record,please try again later!');
+          });
+      }
+    },
   },
 };
 </script>
