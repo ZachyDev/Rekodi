@@ -23,7 +23,7 @@
          <h5 class="card-title">Department: {{meeting.department}}</h5>
          <p class="card-text">Summary: {{meeting.summary}}</p>
          <p class="card-text">Attendees: {{meeting.attendees}}</p>
-         <p class="card-text">Date: {{meeting.date}}</p>
+         <p class="card-text">Date: {{date}}</p>
       </div>
     </div>
     <!-- card end -->
@@ -38,6 +38,7 @@ export default {
   data() {
     return {
       meetings: [],
+      date: '',
     };
   },
   created() {
@@ -46,7 +47,7 @@ export default {
         snapshot.forEach((doc) => {
           const fetchedMeetings = doc.data();
           this.meetings.push(fetchedMeetings);
-          console.log(this.meetings);
+          this.date = fetchedMeetings.date.toDate();
         });
       });
   },
