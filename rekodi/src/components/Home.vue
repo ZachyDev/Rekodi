@@ -12,7 +12,7 @@
           </li>
         </ul>
         <span class="navbar-text">
-          Add Record<router-link :to="{ name: 'AddRecord' }"><i class="fas fa-plus-circle"></i></router-link>
+          Add Record<router-link :to="{ name: 'AddRecord' }">  <i class="fas fa-plus-circle"></i></router-link>
         </span>
       </div>
     </nav>
