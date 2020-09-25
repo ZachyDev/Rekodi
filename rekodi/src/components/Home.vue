@@ -1,21 +1,27 @@
 <template>
   <div class="home">
       <nav class="navbar navbar-expand-lg navbar-light">
-      <router-link class="navbar-brand" :to="{ name: 'Home' }">Rekodi Meetings</router-link>
-      <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
-          </li>
-        </ul>
-        <span class="navbar-text">
-          Add Record<router-link :to="{ name: 'AddRecord' }">  <i class="fas fa-plus-circle"></i></router-link>
-        </span>
-      </div>
-    </nav>
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
     <!-- cards-->
     <div class="card border-primary mb-3" v-for="(meeting,index) in meetings" :key="index">
       <div class="card-header" style="text-transform:uppercase;">{{ meeting.type}}</div>
@@ -23,7 +29,7 @@
          <h5 class="card-title">Department: {{meeting.department}}</h5>
          <p class="card-text">Summary: {{meeting.summary}}</p>
          <p class="card-text">Attendees: {{meeting.attendees}}</p>
-         <p class="card-text">Date: {{date}}</p>
+         <p class="card-text">Date:</p>
       </div>
     </div>
     <!-- card end -->
@@ -38,7 +44,7 @@ export default {
   data() {
     return {
       meetings: [],
-      date: '',
+      // date: '',
     };
   },
   created() {
@@ -47,7 +53,7 @@ export default {
         snapshot.forEach((doc) => {
           const fetchedMeetings = doc.data();
           this.meetings.push(fetchedMeetings);
-          this.date = fetchedMeetings.date.toDate();
+          // this.date = fetchedMeetings.date.toDate();
         });
       });
   },
@@ -55,27 +61,13 @@ export default {
 </script>
 
 <style scoped>
-  .navbar{
-    max-width: 100%;
-    width: 100%;
-    padding: 28px;
-    background: #1a237e;
-    overflow: hidden;
-  }
-  .navbar a{
-    color: #fff;
-    font-size: 30px;
-  }
-  .navbar-text{
-    color: #fff;
-  }
-  .card{
-    margin: 30px auto;
-
+  .navbar {
+    background-color: aqua;
   }
   /* smaller devices */
     @media(max-width:768px) {
     .card{
+      margin-top:40px;
       max-width: 20em;
     }
   }
