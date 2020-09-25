@@ -52,7 +52,7 @@ export default {
 <style scoped>
 .navbar {
   background:#1a237e;
-  color: #fff;
+  color:aliceblue;
   height: 120px;
 }
 
