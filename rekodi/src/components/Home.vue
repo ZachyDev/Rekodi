@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-     <nav class="navbar navbar-expand-lg navbar-light">Rekodi Meetings
+     <nav class="navbar navbar-expand-lg navbar-light"> <span style="font-size:33px;margin-top:-10px;"> Rekodi Meetings</span>
   <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,7 +9,7 @@
 
      </ul>
     <span class="navbar-text">
-    <i class="fas fa-plus"><router-link :to="{ name: 'AddRecord' }" style="text-decoration:none;">Add Record</router-link></i>
+    <i class="fas fa-plus" style="color:#fff;"><router-link :to="{ name: 'AddRecord' }" style="text-decoration:none;color:#fff;">Add Record</router-link></i>
     </span>
   </div>
 </nav>
@@ -20,7 +20,7 @@
          <h5 class="card-title">Department: {{meeting.department}}</h5>
          <p class="card-text">Summary: {{meeting.summary}}</p>
          <p class="card-text">Attendees: {{meeting.attendees}}</p>
-         <p class="card-text">Date:</p>
+         <p class="card-text">Date: {{ meeting.date }}</p>
       </div>
     </div>
     <!-- card end -->
@@ -35,7 +35,6 @@ export default {
   data() {
     return {
       meetings: [],
-      // date: '',
     };
   },
   created() {
@@ -44,7 +43,6 @@ export default {
         snapshot.forEach((doc) => {
           const fetchedMeetings = doc.data();
           this.meetings.push(fetchedMeetings);
-          // this.date = fetchedMeetings.date.toDate();
         });
       });
   },
@@ -53,9 +51,11 @@ export default {
 
 <style scoped>
 .navbar {
-  background: #4a148c;
+  background:#1a237e;
   color: aliceblue;
+  height: 120px;
 }
+
   .card{
     margin: 100px auto;
 
