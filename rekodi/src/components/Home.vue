@@ -52,11 +52,11 @@ export default {
 <style scoped>
 .navbar {
   background:#1a237e;
-  color: aliceblue;
+  color: #fff;
   height: 120px;
 }
 
-  .card{
+.card{
     margin: 100px auto;
 
   }
