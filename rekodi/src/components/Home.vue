@@ -1,25 +1,16 @@
 <template>
   <div class="home">
-      <nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+     <nav class="navbar navbar-expand-lg navbar-light">Rekodi Meetings
+  <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+
+     </ul>
+    <span class="navbar-text">
+    <i class="fas fa-plus"><router-link :to="{ name: 'AddRecord' }" style="text-decoration:none;">Add Record</router-link></i>
+    </span>
   </div>
 </nav>
     <!-- cards-->
@@ -61,13 +52,18 @@ export default {
 </script>
 
 <style scoped>
-  .navbar {
-    background-color: aqua;
+.navbar {
+  background: #4a148c;
+  color: aliceblue;
+}
+  .card{
+    margin: 100px auto;
+
   }
   /* smaller devices */
     @media(max-width:768px) {
     .card{
-      margin-top:40px;
+      margin-top:px;
       max-width: 20em;
     }
   }
