@@ -1,7 +1,7 @@
 <template>
   <div class="home">
       <nav class="navbar navbar-expand-lg navbar-light">
-      <router-link class="navbar-brand" to="/about">Rekodi Meetings</router-link>
+      <router-link class="navbar-brand" :to="{ name: 'Home' }">Rekodi Meetings</router-link>
       <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
