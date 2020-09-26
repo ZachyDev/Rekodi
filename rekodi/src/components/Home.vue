@@ -14,7 +14,8 @@
   </div>
 </nav>
     <!-- cards-->
-    <div class="card border-primary mb-3" v-for="(meeting,index) in meetings" :key="index">
+    <div class="card border-primary mb-3" v-for="meeting in meetings" :key="meeting.id">
+      <i class="material-icons delete" @click="deleteMeeting(meeting.id)">delete</i>
       <div class="card-header" style="text-transform:uppercase;">{{ meeting.type}}</div>
       <div class="card-body text-primary">
          <h5 class="card-title">Department: {{meeting.department}}</h5>
@@ -37,12 +38,23 @@ export default {
       meetings: [],
     };
   },
+  methods: {
+    deleteMeeting(id) {
+      firestoreDb.collection('r_meetings').doc(id).delete()
+        .then(() => {
+          this.meetings = this.meetings.filter((meeting) => {
+            return meeting.id !== id;
+          });
+        });
+    },
+  },
   created() {
     firestoreDb.collection('r_meetings').get()
       .then((snapshot) => {
         snapshot.forEach((doc) => {
-          const fetchedMeetings = doc.data();
-          this.meetings.push(fetchedMeetings);
+          const meeting = doc.data();
+          meeting.id = doc.id;
+          this.meetings.push(meeting);
         });
       });
   },
@@ -59,6 +71,12 @@ export default {
 .card{
     margin: 100px auto;
 
+  }
+  .material-icons {
+    display: flex;
+    justify-content: flex-end;
+    color: red;
+    cursor: pointer;
   }
   /* smaller devices */
     @media(max-width:768px) {
