@@ -15,7 +15,7 @@
 </nav>
     <!-- cards-->
     <div class="card border-primary mb-3" v-for="meeting in meetings" :key="meeting.id">
-      <i class="material-icons delete" @click="deleteMeeting(meeting.id)">delete</i>
+      <i class="material-icons delete" @click="deleteMeeting(meeting.id)" id="del">delete</i>
       <div class="card-header" style="text-transform:uppercase;">{{ meeting.type}}</div>
       <div class="card-body text-primary">
          <h5 class="card-title">Department: {{meeting.department}}</h5>
@@ -23,6 +23,11 @@
          <p class="card-text">Attendees: {{meeting.attendees}}</p>
          <p class="card-text">Date: {{ meeting.date }}</p>
       </div>
+      <span class="btn-floating btn-large halfway-fab pink">
+        <router-link :to="{name: 'EditRecord', params: {edit: meeting.id}}">
+          <i class="material-icons edit">edit</i>
+        </router-link>
+      </span>
     </div>
     <!-- card end -->
 </div>
@@ -72,7 +77,7 @@ export default {
     margin: 100px auto;
 
   }
-  .material-icons {
+  #del{
     display: flex;
     justify-content: flex-end;
     color: red;
