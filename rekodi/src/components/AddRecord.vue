@@ -54,18 +54,13 @@ export default {
     AddRecord() {
       if (this.type && this.dept && this.attendees && this.summary && this.date) {
         firestoreDb.collection('r_meetings').add({
-          type: this.type,
-          department: this.dept,
+          type: this.dept,
           attendees: this.attendees,
+          department: this.dept,
           summary: this.summary,
-          date: this.date,
-        })
-          .then(() => {
-            this.$router.push({ name: 'Home' });
-          })
-          .catch(() => {
-            alert('Would not save record,please try again later!');
-          });
+        }).then(() => {
+          this.$router.push({ name: 'Home' });
+        }).catch('failed to add record!');
       }
     },
   },
